@@ -37,9 +37,8 @@ public class CustomerDAOImpl implements CustomerDAO {
 		// TODO Auto-generated method stub
 		Session currentSession = sessionFactory.getCurrentSession();
 		System.out.println(currentSession.toString());
+// Criteria cr = currentSession.createCriteria(Customer.class);
 
-		// Criteria cr = currentSession.createCriteria(Customer.class);
-		
 		CriteriaBuilder cb = currentSession.getCriteriaBuilder();
 		CriteriaQuery cq = cb.createQuery(Customer.class);
 		Root<Customer> rootCustomer = cq.from(Customer.class);
@@ -51,7 +50,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 		cq.where(cb.equal(rootCustomer.get("id"), 69));
 
 		Query<Customer> query = currentSession.createQuery(cq);
-		
+
 		return query.getResultList();
 	}
 
